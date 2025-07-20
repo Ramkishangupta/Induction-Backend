@@ -7,7 +7,7 @@ services:
     buildCommand: npm install
     startCommand: node server.js
     envVars:
-      - key: MONGO_URI
+      - key: mongodb+srv://ramkishangupta8435:8JjBC8tfAUCswp4T@cluster0.1f8c1vf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
         fromService:
           type: mongodb
           name: induction-mongodb

@@ -1,23 +1,24 @@
 const dotenv = require('dotenv');
-dotenv.config({ path: "./config/config.env" });
-const app = require("./app");
-const connectDatabase = require("./config/database");
+dotenv.config({ path: './config/config.env' });
 
+const app = require('./app');
+const connectDatabase = require('./config/database');
 
+// Connect to DB
 connectDatabase();
 
+// Start server
+const PORT = process.env.PORT || 5000;
 
-const PORT =  process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+const server = app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
 
-
-//Unhandled Promise Rejection
-process.on("unhandledRejection",err=>{
-    console.log(`Error: ${err.message}`);
-    console.log(`Shutting down the server due to unhandled Promise rejection`);
-    server.close(()=>{
-        process.exit(1);
-    });
-})
+// Gracefully shut down on unhandled promise rejection
+process.on('unhandledRejection', (err) => {
+  console.log(`Error: ${err.message}`);
+  console.log(`Shutting down the server due to unhandled Promise rejection`);
+  server.close(() => {
+    process.exit(1);
+  });
+});

@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: induction-backend
+    env: node
+    repo: https://github.com/Ramkishangupta/Induction-Backend
+    branch: main
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: MONGO_URI
+        fromService:
+          type: mongodb
+          name: induction-mongodb
+          property: connectionString
+
+  - type: mongodb
+    name: induction-mongodb

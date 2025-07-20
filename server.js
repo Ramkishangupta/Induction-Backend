@@ -1,11 +1,12 @@
-const dotenv = require("dotenv");
-const connectDatabase = require("./config/database");
+const dotenv = require('dotenv');
+dotenv.config({ path: "./config/config.env" });
 const app = require("./app");
+const connectDatabase = require("./config/database");
 
-dotenv.config();
 connectDatabase();
 
-const PORT = process.env.PORT || 5000;
+
+const PORT =  process.env.PORT || 5000;
 app.listen(PORT, () => {
-    console.log(`Server is running on:${PORT}`);
+    console.log("server is running")
 });

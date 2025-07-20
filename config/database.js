@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
 
 const connectDatabase = ()=>{
-    mongoose.connect(process.env.mongodbURL,{useNewUrlParser: true,useUnifiedTopology: true, maxPoolSize: 50}).then((data)=>{
-        console.log(`Mongodb connected with server`);
+    mongoose.connect(process.env.mongodbURL,{
+      maxPoolSize:50
+    }).then((data)=>{
+        console.log(`Mongodb connected with server :${data.connection.host}`);
     })
 }
 

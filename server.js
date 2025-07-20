@@ -1,24 +1,15 @@
-const dotenv = require('dotenv');
-dotenv.config({ path: './config/config.env' });
+const dotenv = require("dotenv");
+const connectDatabase = require("./config/database");
+const app = require("./app");
 
-const app = require('./app');
-const connectDatabase = require('./config/database');
+// Load config
+dotenv.config();
 
-// Connect to DB
+// Connect to MongoDB
 connectDatabase();
 
 // Start server
 const PORT = process.env.PORT || 5000;
-
-const server = app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
-
-// Gracefully shut down on unhandled promise rejection
-process.on('unhandledRejection', (err) => {
-  console.log(`Error: ${err.message}`);
-  console.log(`Shutting down the server due to unhandled Promise rejection`);
-  server.close(() => {
-    process.exit(1);
-  });
+app.listen(PORT, () => {
+    console.log(`Server is running on:${PORT}`);
 });

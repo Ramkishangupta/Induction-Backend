@@ -5,12 +5,14 @@ const app = express();
 
 const corsOptions = {
   origin: [
-    'https://varaha.itch.io/feinduction',
-    'https://leaderboard-2025.vercel.app'
+
   ]
 };
 
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: ['https://varaha.itch.io/feinduction','https://leaderboard-2025.vercel.app']
+}));
+
 app.use(express.json());
 
 

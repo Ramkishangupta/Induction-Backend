@@ -4,7 +4,10 @@ const cors = require('cors');
 const app = express();
 
 const corsOptions = {
-  origin: 'https://varaha.itch.io/feinduction'               // if you're using cookies or sessions
+  origin: [
+    'https://varaha.itch.io/feinduction',
+    'hhttps://leaderboard-2025.vercel.app/'
+  ]
 };
 
 app.use(cors(corsOptions));

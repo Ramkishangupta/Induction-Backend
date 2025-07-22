@@ -6,7 +6,7 @@ const app = express();
 const corsOptions = {
   origin: [
     'https://varaha.itch.io/feinduction',
-    'hhttps://leaderboard-2025.vercel.app/'
+    'hhttps://leaderboard-2025.vercel.app'
   ]
 };
 
